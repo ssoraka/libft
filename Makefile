@@ -80,7 +80,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 
-%.c: @%.o
+%.o: %.c
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
