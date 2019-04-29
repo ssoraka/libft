@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_arr_new.c                                   :+:      :+:    :+:   */
+/*   ft_int_arr_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 10:25:25 by ssoraka           #+#    #+#             */
-/*   Updated: 2019/04/26 10:25:25 by ssoraka          ###   ########.fr       */
+/*   Created: 2019/04/26 10:13:28 by ssoraka           #+#    #+#             */
+/*   Updated: 2019/04/26 10:13:29 by ssoraka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		**ft_int_arr_new(int row, int column)
+void	ft_int_arr_free(int **arr, int row)
 {
 	int		i;
-	int		**tab;
 
 	i = 0;
-	if ((tab = (int**)ft_memalloc(sizeof(tab) * row)) == NULL)
-		return (0);
+	if (arr == 0)
+		return ;
 	while (i < row)
 	{
-		if ((tab[i] = (int*)ft_memalloc(sizeof(*tab) * column)) == NULL)
-		{
-			ft_int_arr_free(tab, i - 1);
-			return (0);
-		}
+		free(arr[i]);
 		i++;
 	}
-	return (tab);
+	free(arr);
 }

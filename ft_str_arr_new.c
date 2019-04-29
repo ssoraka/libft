@@ -24,7 +24,7 @@ char	**ft_create_char_table(int row, int column)
 	{
 		if ((str[i] = ft_strnew(column)) == NULL)
 		{
-			ft_free_str_mass(&str);
+			ft_str_arr_free(str);
 			return (0);
 		}
 		i++;
