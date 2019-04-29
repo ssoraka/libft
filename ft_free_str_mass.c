@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_free_str_mass.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 11:45:07 by ssoraka           #+#    #+#             */
-/*   Updated: 2019/04/16 11:49:04 by ssoraka          ###   ########.fr       */
+/*   Created: 2019/04/25 20:33:23 by ssoraka           #+#    #+#             */
+/*   Updated: 2019/04/25 20:34:35 by ssoraka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_free_str_mass(char ***str)
 {
-	if (fd < 0)
+	int		n;
+
+	n = 0;
+	if (str == 0 || *str == 0)
 		return ;
-	write(fd, &c, 1);
+	while ((*str)[n])
+	{
+		free((*str)[n]);
+		n++;
+	}
+	free(*str);
 }

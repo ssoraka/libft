@@ -16,6 +16,19 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <fcntl.h>
+# define BUFF_SIZE 1
+# define TRUE 1
+# define FALSE 0
+# define SUCCESS 0
+# define FAIL 1
+# define NOT !
+# define AND &&
+# define OR ||
+# define MOD %
+# define DIV /
 
 typedef struct		s_list
 {
@@ -84,5 +97,14 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				ft_strdel(char **as);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
+int					get_next_line(const int fd, char **line);
+void				ft_free_str_mass(char ***str);
+void				ft_free_int_mass(int ***arr, int row);
+char				**ft_str_arr_new(int row, int column);
+int					**ft_int_arr_new(int row, int column);
+int					ft_isspace(int c);
+char				*ft_skip_chrs(char *str, char *skip);
+int					ft_sqrt(size_t nb);
+long				ft_power(long nb, int power);
 
 #endif

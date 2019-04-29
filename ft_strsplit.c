@@ -39,6 +39,21 @@ static	int		ft_words(char *str, char c)
 	return (count);
 }
 
+static char		**ft_free_table(char **str)
+{
+	int		n;
+
+	n = 0;
+	while (str[n])
+	{
+		free(str[n]);
+		n++;
+	}
+	free(str[n]);
+	free(str);
+	return(0);
+}
+
 static	char	**ft_strsplit2(char *str, char c)
 {
 	char	**chr;
@@ -46,12 +61,12 @@ static	char	**ft_strsplit2(char *str, char c)
 	int		j;
 
 	j = 0;
-	if (!(chr = (char**)malloc(sizeof(chr) * (ft_words(str, c) + 1))))
+	if (!(chr = (char**)ft_memalloc(sizeof(chr) * (ft_words(str, c) + 1))))
 		return (0);
 	while (str[0] != '\0')
 	{
 		if (!(chr[j] = ft_strnew(ft_lenword(str, c))))
-			return (0);
+			return (ft_free_table(chr));
 		chr2 = chr[j];
 		while (str[0] != '\0' && str[0] != c)
 		{
@@ -63,7 +78,6 @@ static	char	**ft_strsplit2(char *str, char c)
 		while (str[0] != '\0' && str[0] == c)
 			str++;
 	}
-	chr[j] = 0;
 	return (chr);
 }
 

@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_str_arr_new.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 11:45:07 by ssoraka           #+#    #+#             */
-/*   Updated: 2019/04/16 11:49:04 by ssoraka          ###   ########.fr       */
+/*   Created: 2019/04/26 10:24:21 by ssoraka           #+#    #+#             */
+/*   Updated: 2019/04/26 10:24:21 by ssoraka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	**ft_create_char_table(int row, int column)
 {
-	if (fd < 0)
-		return ;
-	write(fd, &c, 1);
+	int		i;
+	char	**str;
+
+	i = 0;
+	if ((str = (char**)ft_memalloc(sizeof(str) * (row + 1))) == NULL)
+		return (0);
+	while (i < row)
+	{
+		if ((str[i] = ft_strnew(column)) == NULL)
+		{
+			ft_free_str_mass(&str);
+			return (0);
+		}
+		i++;
+	}
+	return (str);
 }

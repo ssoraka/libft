@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_int_arr_new.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/16 11:45:07 by ssoraka           #+#    #+#             */
-/*   Updated: 2019/04/16 11:49:04 by ssoraka          ###   ########.fr       */
+/*   Created: 2019/04/26 10:25:25 by ssoraka           #+#    #+#             */
+/*   Updated: 2019/04/26 10:25:25 by ssoraka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int		**ft_int_arr_new(int row, int column)
 {
-	if (fd < 0)
-		return ;
-	write(fd, &c, 1);
+	int		i;
+	int		**tab;
+
+	i = 0;
+	if ((tab = (int**)ft_memalloc(sizeof(tab) * row)) == NULL)
+		return (0);
+	while (i < row)
+	{
+		if ((tab[i] = (int*)ft_memalloc(sizeof(*tab) * column)) == NULL)
+		{
+			ft_free_int_mass(&tab, i - 1);
+			return (0);
+		}
+		i++;
+	}
+	return (tab);
 }

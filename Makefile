@@ -72,7 +72,17 @@ ft_strsub.c \
 ft_strtrim.c \
 ft_tolower.c \
 ft_toupper.c \
-ft_znak.c
+ft_znak.c \
+get_next_line.c \
+ft_free_int_mass.c \
+ft_free_str_mass.c \
+ft_int_arr_new.c \
+ft_str_arr_new.c \
+ft_isspace.c \
+ft_sqrt.c \
+ft_power.c \
+ft_skip_chrs.c \
+ft_byte_to_bits.c
 OBJS = $(SRC:.c=.o)
 
 all: $(NAME)
