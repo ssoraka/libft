@@ -38,7 +38,7 @@ char		*ft_skip_chrs(char *str, char *skip)
 	while (str[i])
 	{
 		if (ft_char_check(str[i], skip) == 0)
-			break;
+			break ;
 		i++;
 	}
 	return (str + i);

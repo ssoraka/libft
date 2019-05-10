@@ -82,7 +82,9 @@ ft_isspace.c \
 ft_sqrt.c \
 ft_power.c \
 ft_skip_chrs.c \
-ft_byte_to_bits.c
+ft_bytes_to_bits.c \
+ft_strjoin_free.c \
+ft_strrevers.c
 OBJS = $(SRC:.c=.o)
 
 all: $(NAME)

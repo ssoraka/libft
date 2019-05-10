@@ -106,5 +106,8 @@ int					ft_isspace(int c);
 char				*ft_skip_chrs(char *str, char *skip);
 int					ft_sqrt(size_t nb);
 long				ft_power(long nb, int power);
+char				*ft_bytes_to_bits(char *c, int n, char *separator);
+char				*ft_strjoin_free(char *s1, char *s2, int del1, int del2);
+void				ft_strrevers(char *str);
 
 #endif

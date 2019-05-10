@@ -15,11 +15,11 @@
 char	*ft_strnew(size_t size)
 {
 	char	*str;
-	
+
+	str = NULL;
 	if (size + 1 == 0)
 		return (NULL);
-	str = (char*)ft_memalloc(sizeof(str) * (size + 1));
-	if (str == 0)
+	if (!(str = (char *)ft_memalloc(sizeof(char) * (size + 1))))
 		return (NULL);
 	return (str);
 }

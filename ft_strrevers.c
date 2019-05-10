@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*   ft_strrevers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 22:58:27 by ssoraka           #+#    #+#             */
-/*   Updated: 2019/03/02 21:49:39 by ssoraka          ###   ########.fr       */
+/*   Created: 2019/05/04 17:03:39 by ssoraka           #+#    #+#             */
+/*   Updated: 2019/05/04 17:03:39 by ssoraka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_power(long nb, int power)
+/*
+**	эта функция
+**	реверсирует строку
+*/
+
+void	ft_strrevers(char *str)
 {
-	if (power < 0 || nb != (nb * 10) / 10)
-		return (0);
-	if (power == 0 || nb == 1)
-		return (1);
-	if (power == 1)
-		return (nb);
-	if (power % 2)
-		return (nb * ft_power(nb, power - 1));
-	else
-		return (ft_power(nb * nb, power >> 1));
+	int		i;
+	int		len;
+	char	chr;
+
+	i = 0;
+	if (str == NULL || str[0] == 0)
+		return ;
+	len = ft_strlen(str);
+	while (i < len / 2)
+	{
+		chr = str[i];
+		str[i] = str[len - i - 1];
+		str[len - i - 1] = chr;
+		i++;
+	}
 }

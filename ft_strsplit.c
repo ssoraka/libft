@@ -51,7 +51,7 @@ static char		**ft_free_table(char **str)
 	}
 	free(str[n]);
 	free(str);
-	return(0);
+	return (0);
 }
 
 static	char	**ft_strsplit2(char *str, char c)

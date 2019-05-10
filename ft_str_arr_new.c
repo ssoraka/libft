@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	**ft_create_char_table(int row, int column)
+char	**ft_str_arr_new(int row, int column)
 {
 	int		i;
 	char	**str;

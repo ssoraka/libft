@@ -18,11 +18,11 @@ int		**ft_int_arr_new(int row, int column)
 	int		**tab;
 
 	i = 0;
-	if ((tab = (int**)ft_memalloc(sizeof(tab) * row)) == NULL)
+	if ((tab = (int **)ft_memalloc(sizeof(tab) * row)) == NULL)
 		return (0);
 	while (i < row)
 	{
-		if ((tab[i] = (int*)ft_memalloc(sizeof(*tab) * column)) == NULL)
+		if ((tab[i] = (int *)ft_memalloc(sizeof(*tab) * column)) == NULL)
 		{
 			ft_int_arr_free(tab, i - 1);
 			return (0);
