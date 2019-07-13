@@ -20,7 +20,7 @@ static int		end_line(char **line, char **str, int flag)
 	if ((*str)[0] == '\0' && flag == 0)
 	{
 		*line = NULL;
-		ft_strdel(str);
+		ft_memdel((void *)str);
 		return (0);
 	}
 	else if ((temp2 = ft_strchr(*str, '\n')) != 0)

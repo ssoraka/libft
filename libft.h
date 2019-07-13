@@ -98,16 +98,23 @@ void				ft_strdel(char **as);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 int					get_next_line(const int fd, char **line);
-void				ft_str_arr_free(char **str);
-void				ft_int_arr_free(int **arr, int row);
+void				ft_str_arr_free(char ***str);
+void				ft_int_arr_free(int ***arr, int row);
 char				**ft_str_arr_new(int row, int column);
 int					**ft_int_arr_new(int row, int column);
 int					ft_isspace(int c);
 char				*ft_skip_chrs(char *str, char *skip);
-int					ft_sqrt(size_t nb);
+size_t				ft_sqrt(size_t nb);
 long				ft_power(long nb, int power);
-char				*ft_bytes_to_bits(char *c, int n, char *separator);
+char				*ft_bytes_to_bits(void *ptr, int n, char *separator);
 char				*ft_strjoin_free(char *s1, char *s2, int del1, int del2);
-void				ft_strrevers(char *str);
+char				*ft_strrevers(char *str);
+char				*ft_ltoa(long n);
+char				*ft_ultoa(unsigned long un);
+char				*ft_strupcase(char *str);
+char				*ft_strlowcase(char *str);
+int					ft_max(int first, int second);
+int					ft_min(int first, int second);
+void				ft_swap(int *a, int *b);
 
 #endif

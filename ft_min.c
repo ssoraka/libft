@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/27 17:43:08 by ssoraka           #+#    #+#             */
-/*   Updated: 2019/04/15 21:19:38 by ssoraka          ###   ########.fr       */
+/*   Created: 2019/06/07 10:56:44 by ssoraka           #+#    #+#             */
+/*   Updated: 2019/06/07 10:56:44 by ssoraka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+int		ft_max(int first, int second)
 {
-	ft_putstr_fd(s, 1);
+	if (second > first)
+		return (first);
+	return (second);
 }

@@ -24,7 +24,7 @@ char	**ft_str_arr_new(int row, int column)
 	{
 		if ((str[i] = ft_strnew(column)) == NULL)
 		{
-			ft_str_arr_free(str);
+			ft_str_arr_free(&str);
 			return (0);
 		}
 		i++;

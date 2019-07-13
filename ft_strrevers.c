@@ -17,7 +17,7 @@
 **	реверсирует строку
 */
 
-void	ft_strrevers(char *str)
+char	*ft_strrevers(char *str)
 {
 	int		i;
 	int		len;
@@ -25,7 +25,7 @@ void	ft_strrevers(char *str)
 
 	i = 0;
 	if (str == NULL || str[0] == 0)
-		return ;
+		return (NULL);
 	len = ft_strlen(str);
 	while (i < len / 2)
 	{
@@ -34,4 +34,5 @@ void	ft_strrevers(char *str)
 		str[len - i - 1] = chr;
 		i++;
 	}
+	return (str);
 }

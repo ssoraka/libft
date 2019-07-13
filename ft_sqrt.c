@@ -12,30 +12,19 @@
 
 #include "libft.h"
 
-int		ft_sqrt(size_t nb)
+size_t		ft_sqrt(size_t nb)
 {
-	size_t low;
-	size_t high;
+	size_t	root;
+	size_t	root2;
 
-	if (nb < 1)
+	if (nb == 0 || nb == 2 || nb == 3)
 		return (0);
 	if (nb == 1)
 		return (1);
-	if (nb > 3000000000)
+	root = nb >> 1;
+	while (root != (root2 = nb / root))
+		root = ((root + root2) >> 1);
+	if (nb % root)
 		return (0);
-	high = nb;
-	low = high >> 1;
-	while (high - low > 1)
-	{
-		if (low * low > nb)
-		{
-			high = low;
-			low = low >> 1;
-		}
-		else if (low * low < nb)
-			low = (high + low) >> 1;
-		if (low * low == nb)
-			return (low);
-	}
-	return (0);
+	return (root);
 }
