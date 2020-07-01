@@ -25,3 +25,22 @@ void	*ft_memset(void *dest, int c, size_t n)
 		str[i++] = chr;
 	return (dest);
 }
+
+void	*ft_memset8(void *dest, int c, size_t n)
+{
+	size_t			i;
+	size_t			n2;
+	unsigned long	chr;
+	unsigned long	*str;
+
+	i = 0;
+	n2 = n / 8;
+	chr = (unsigned int)c;
+	chr = (chr << 32) | chr;
+	str = dest;
+	while (i < n2)
+		str[i++] = chr;
+	if (n > n2 * 8)
+		ft_memset((void *)(str + n2), c, n % 8);
+	return (dest);
+}

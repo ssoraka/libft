@@ -22,3 +22,18 @@ void	ft_bzero(void *s, size_t n)
 	while (i < n)
 		str[i++] = '\0';
 }
+
+void	ft_bzero8(void *s, size_t n)
+{
+	size_t	i;
+	size_t	n2;
+	long	*str;
+
+	i = 0;
+	n2 = n / 8;
+	str = s;
+	while (i < n2)
+		str[i++] = '\0';
+	if (n > n2 * 8)
+		ft_bzero((void *)(str + n2), n % 8);
+}
