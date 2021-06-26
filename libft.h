@@ -29,6 +29,7 @@
 # define OR ||
 # define MOD %
 # define DIV /
+# include "collections/collections_header.h"
 
 typedef struct		s_list
 {
@@ -67,6 +68,7 @@ char				*ft_strnstr
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *str);
+int					ft_atoi_base(const char *str, int base);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);

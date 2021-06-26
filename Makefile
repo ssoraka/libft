@@ -10,10 +10,13 @@
 #                                                                              #
 #******************************************************************************#
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -c
+GCC = gcc
+CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
-HEADER = .
+HEADER =	libft.h \
+			collections/collections_header.h \
+			collections/collections_help_header.h \
+			collections/collections_struct.h
 SRC = ft_abs.c \
 ft_atoi.c \
 ft_bzero.c \
@@ -91,7 +94,18 @@ ft_strupcase.c \
 ft_strlowcase.c \
 ft_max.c \
 ft_min.c \
-ft_swap.c
+ft_swap.c \
+collections/arr_init.c collections/arr_del.c collections/arr_each.c \
+collections/arr_get.c collections/arr_add.c \
+collections/hmap.c collections/hmap2.c \
+collections/ilist_setters.c collections/ilist_setters2.c \
+collections/llist_init.c collections/llist_add.c collections/llist_del.c \
+collections/llist_get.c collections/llist_stack.c \
+collections/lnode.c \
+collections/tnode_track.c collections/tnode_init_del.c \
+collections/tnode_rebalance.c collections/tnode_rbtree_property.c \
+collections/rbtree_add_get.c collections/rbtree_del.c \
+collections/rbtree_track.c collections/rbtree_init.c
 OBJS = $(SRC:.c=.o)
 
 .PHONY: clean all fclean re
@@ -101,13 +115,13 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) $< -o $@ -I $(HEADER)
+%.o: %.c ${HEADER}
+	$(GCC) $(CFLAGS) -c $< -o $@  $(addprefix -I ./,${HEADER})
 
 clean:
-	@rm -rf $(OBJS)
+	rm -rf $(OBJS)
 
 fclean: clean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all

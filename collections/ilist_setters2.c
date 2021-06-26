@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ilist_setters.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/14 10:50:40 by ssoraka           #+#    #+#             */
-/*   Updated: 2019/04/14 11:08:34 by ssoraka          ###   ########.fr       */
+/*   Created: 2020/01/12 18:12:06 by ssoraka           #+#    #+#             */
+/*   Updated: 2020/01/12 18:12:06 by ssoraka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "collections_header.h"
+#include "collections_help_header.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_ilist_set_list(t_ilist *ilist, void *list, int elem_size)
 {
-	size_t	i;
-	char	*str;
-
-	i = 0;
-	str = s;
-	while (i < n)
-		str[i++] = '\0';
-}
-
-void	ft_bzero8(void *s, size_t n)
-{
-	size_t	i;
-	size_t	n2;
-	long	*str;
-
-	i = 0;
-	n2 = n / 8;
-	str = s;
-	while (i < n2)
-		str[i++] = '\0';
-	if (n > n2 * 8)
-		ft_bzero((void *)(str + n2), n % 8);
+	if (elem_size <= MAX_LIST_SIZE && elem_size > 0)
+	{
+		ft_memcpy8((void *)ilist->mem, list, elem_size);
+		ilist->size = elem_size;
+	}
+	else
+	{
+		ft_bzero8((void *)ilist->mem, MAX_LIST_SIZE);
+		ilist->size = 0;
+	}
 }
