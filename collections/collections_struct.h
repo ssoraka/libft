@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_COLLECTIONS_STRUCT_H
-# define FT_COLLECTIONS_STRUCT_H
+#ifndef COLLECTIONS_STRUCT_H
+# define COLLECTIONS_STRUCT_H
 # include "collections_header.h"
 
 # define RED 0
@@ -25,7 +25,7 @@ typedef void	t_new_key;
 typedef void	t_old_key;
 typedef int		t_bool;
 
-typedef struct		s_arr
+typedef struct s_arr
 {
 	void			*elems;
 	char			*current;
@@ -37,14 +37,14 @@ typedef struct		s_arr
 	void			*(*value)(void *);
 }					t_arr;
 
-typedef struct		s_lnode
+typedef struct s_lnode
 {
 	void			*elem;
 	struct s_lnode	*next;
 	struct s_lnode	*prev;
 }					t_lnode;
 
-typedef struct		s_llist
+typedef struct s_llist
 {
 	struct s_lnode	start;
 	struct s_lnode	end;
@@ -53,7 +53,7 @@ typedef struct		s_llist
 	void			(*func_del)(void *);
 }					t_llist;
 
-typedef struct		s_ilist
+typedef struct s_ilist
 {
 	char			mem[MAX_LIST_SIZE];
 	int				(*add)(void *, void *, void *);
@@ -64,7 +64,7 @@ typedef struct		s_ilist
 	int				size;
 }					t_ilist;
 
-typedef struct		s_hmap
+typedef struct s_hmap
 {
 	struct s_ilist	list;
 	struct s_arr	*arr;
@@ -74,7 +74,7 @@ typedef struct		s_hmap
 	int				max_load;
 }					t_hmap;
 
-typedef struct		s_tnode
+typedef struct s_tnode
 {
 	void			*elem;
 	void			*key;
@@ -84,7 +84,7 @@ typedef struct		s_tnode
 	int				color;
 }					t_tnode;
 
-typedef struct		s_rbtr
+typedef struct s_rbtr
 {
 	struct s_tnode	root;
 	struct s_tnode	*next;

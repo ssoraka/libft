@@ -12,17 +12,19 @@
 
 #include "libft.h"
 
-int		**ft_int_arr_new(int row, int column)
+int	**ft_int_arr_new(int row, int column)
 {
 	int		i;
 	int		**tab;
 
 	i = 0;
-	if ((tab = (int **)ft_memalloc(sizeof(tab) * row)) == NULL)
+	tab = (int **)ft_memalloc(sizeof(tab) * row);
+	if (tab == NULL)
 		return (0);
 	while (i < row)
 	{
-		if ((tab[i] = (int *)ft_memalloc(sizeof(*tab) * column)) == NULL)
+		tab[i] = (int *)ft_memalloc(sizeof(*tab) * column);
+		if (tab[i] == NULL)
 		{
 			ft_int_arr_free(&tab, i - 1);
 			return (0);

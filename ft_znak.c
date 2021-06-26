@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_znak(int n)
+int	ft_znak(int n)
 {
 	if (n > 0)
 		return (1);

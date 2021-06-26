@@ -31,7 +31,7 @@ void	ft_for_each_elem(t_arr *arr, void (*func)(void *, void *), void *param)
 	}
 }
 
-int		ft_arr_init_by_value(t_arr *arr, int count, void *value)
+int	ft_arr_init_by_value(t_arr *arr, int count, void *value)
 {
 	void	*ptr;
 	int		i;

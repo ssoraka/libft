@@ -13,14 +13,14 @@
 #include "collections_header.h"
 #include "collections_help_header.h"
 
-int		ft_is_red_color(t_tnode *node)
+int	ft_is_red_color(t_tnode *node)
 {
 	if (!node || node->color == BLACK)
 		return (FALSE);
 	return (TRUE);
 }
 
-int		ft_is_right_child(t_tnode *node)
+int	ft_is_right_child(t_tnode *node)
 {
 	if (node == node->parent->right)
 		return (TRUE);
@@ -29,9 +29,12 @@ int		ft_is_right_child(t_tnode *node)
 
 t_tnode	*ft_get_uncle(t_tnode *node)
 {
-	t_tnode *grant;
+	t_tnode	*grant;
 
-	if (!node || !node->parent || !(grant = node->parent->parent))
+	if (!node || !node->parent)
+		return (NULL);
+	grant = node->parent->parent;
+	if (!grant)
 		return (NULL);
 	if (node->parent == grant->left)
 		return (grant->right);
@@ -41,10 +44,11 @@ t_tnode	*ft_get_uncle(t_tnode *node)
 
 void	ft_tnode_left_rotate(t_tnode *node)
 {
-	t_tnode *grant;
-	t_tnode *tmp;
+	t_tnode	*grant;
+	t_tnode	*tmp;
 
-	if (!(grant = node->parent->parent))
+	grant = node->parent->parent;
+	if (!grant)
 		return ;
 	tmp = node->parent;
 	if (grant->right == tmp)
@@ -61,10 +65,11 @@ void	ft_tnode_left_rotate(t_tnode *node)
 
 void	ft_tnode_right_rotate(t_tnode *node)
 {
-	t_tnode *grant;
-	t_tnode *tmp;
+	t_tnode	*grant;
+	t_tnode	*tmp;
 
-	if (!(grant = node->parent->parent))
+	grant = node->parent->parent;
+	if (!grant)
 		return ;
 	tmp = node->parent;
 	if (grant->right == tmp)

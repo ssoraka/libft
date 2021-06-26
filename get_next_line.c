@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		end_line(char **line, char **str)
+static int	end_line(char **line, char **str)
 {
 	char	*temp;
 	char	*temp2;
@@ -23,7 +23,8 @@ static int		end_line(char **line, char **str)
 		ft_strdel(str);
 		return (0);
 	}
-	else if ((temp2 = ft_strchr(*str, '\n')) != 0)
+	temp2 = ft_strchr(*str, '\n');
+	if (temp2 != 0)
 	{
 		temp = *str;
 		temp2[0] = '\0';
@@ -39,10 +40,10 @@ static int		end_line(char **line, char **str)
 	return (1);
 }
 
-int				get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
 	char		buf[BUFF_SIZE + 1];
-	static char *str[10240];
+	static char	*str[10240];
 	char		*temp;
 	int			ret;
 
@@ -55,7 +56,8 @@ int				get_next_line(const int fd, char **line)
 		buf[0] = '\0';
 		while (!(ft_strchr(buf, '\n')))
 		{
-			if ((ret = read(fd, buf, BUFF_SIZE)) == 0)
+			ret = read(fd, buf, BUFF_SIZE);
+			if (ret == 0)
 				break ;
 			buf[ret] = '\0';
 			temp = ft_strjoin(str[fd], buf);

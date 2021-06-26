@@ -13,15 +13,15 @@
 #include "collections_header.h"
 #include "collections_help_header.h"
 
-int		ft_realloc_arr(t_arr *arr, size_t new_count)
+int	ft_realloc_arr(t_arr *arr, size_t new_count)
 {
-	void *tmp;
+	void	*tmp;
 
 	if (!arr)
 		return (FALSE);
 	if (new_count <= arr->elems_count)
 		return (TRUE);
-	if (!(tmp = ft_memalloc(new_count * arr->elem_size)))
+	if (is_null(ft_memalloc(new_count * arr->elem_size), &tmp))
 		return (FALSE);
 	if (arr->elems)
 		ft_memcpy8(tmp, arr->elems, arr->elems_count * arr->elem_size);
@@ -34,7 +34,7 @@ int		ft_realloc_arr(t_arr *arr, size_t new_count)
 
 void	*ft_arr_add(t_arr *arr, void *elem)
 {
-	char *tmp;
+	char	*tmp;
 
 	if (!arr || !elem)
 		return (NULL);

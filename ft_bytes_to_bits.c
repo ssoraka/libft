@@ -39,7 +39,7 @@ static int	ft_byte_to_bits(char *str, char c)
 	return (SUCCESS);
 }
 
-char		*ft_bytes_to_bits(void *ptr, int n, char *separator)
+char	*ft_bytes_to_bits(void *ptr, int n, char *separator)
 {
 	char	*str;
 	char	*c;

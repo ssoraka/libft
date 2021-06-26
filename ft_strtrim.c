@@ -29,7 +29,7 @@ char	*ft_strtrim(char const *s)
 	i = ft_strlen(begin);
 	while (str[i - 1] == ' ' || str[i - 1] == '\n' || str[i - 1] == '\t')
 		i--;
-	if (!(str = ft_strnew(i)))
+	if (is_null(ft_strnew(i), (void **) &str))
 		return (NULL);
 	while (i > 0)
 	{

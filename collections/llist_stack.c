@@ -13,26 +13,28 @@
 #include "collections_header.h"
 #include "collections_help_header.h"
 
-int		ft_llist_dpush(t_llist *list, void *elem)
+int	ft_llist_dpush(t_llist *list, void *elem)
 {
-	t_lnode *node;
+	t_lnode	*node;
 
 	if (!list)
 		return (FALSE);
-	if (!(node = ft_create_lnode(elem)))
+	node = ft_create_lnode(elem);
+	if (!node)
 		return (FALSE);
 	ft_insert_lnode(node, list->end.prev);
 	list->elems_count++;
 	return (TRUE);
 }
 
-int		ft_llist_push(t_llist *list, void *elem)
+int	ft_llist_push(t_llist *list, void *elem)
 {
-	t_lnode *node;
+	t_lnode	*node;
 
 	if (!list)
 		return (FALSE);
-	if (!(node = ft_create_lnode(elem)))
+	node = ft_create_lnode(elem);
+	if (!node)
 		return (FALSE);
 	ft_insert_lnode(node, &list->start);
 	list->elems_count++;

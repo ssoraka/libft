@@ -14,7 +14,7 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	t_list *list;
+	t_list	*list;
 
 	if (alst == 0 || new == 0)
 		return ;

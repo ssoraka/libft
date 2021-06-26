@@ -18,7 +18,7 @@
 
 char	*ft_strlowcase(char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

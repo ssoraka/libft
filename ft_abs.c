@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t		ft_abs(int n)
+size_t	ft_abs(int n)
 {
 	if (n >= 0)
 		return ((size_t)n);

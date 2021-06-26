@@ -23,7 +23,8 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	n = ft_strlen(s);
 	if ((size_t)start > n)
 		return (NULL);
-	if (!(dest = ft_strnew(len)))
+	dest = (char *)ft_strnew(len);
+	if (!dest)
 		return (NULL);
 	src = (char *)s + start;
 	return (ft_strncpy(dest, src, len));

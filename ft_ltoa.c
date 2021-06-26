@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char		*ft_ltoa(signed long n)
+char	*ft_ltoa(signed long n)
 {
 	char	temp[21];
 	long	num;
@@ -36,7 +36,7 @@ char		*ft_ltoa(signed long n)
 	return (ft_strdup(temp));
 }
 
-char		*ft_ultoa(unsigned long un)
+char	*ft_ultoa(unsigned long un)
 {
 	char	temp[21];
 	long	num;

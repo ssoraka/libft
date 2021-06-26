@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static	int		ft_lenword(char *str, char c)
+static int	ft_lenword(char *str, char c)
 {
 	int		i;
 
@@ -22,7 +22,7 @@ static	int		ft_lenword(char *str, char c)
 	return (i);
 }
 
-static	int		ft_words(char *str, char c)
+static int	ft_words(char *str, char c)
 {
 	int		count;
 
@@ -39,7 +39,7 @@ static	int		ft_words(char *str, char c)
 	return (count);
 }
 
-static char		**ft_free_table(char **str)
+static char	**ft_free_table(char **str)
 {
 	int		n;
 
@@ -51,21 +51,22 @@ static char		**ft_free_table(char **str)
 	}
 	free(str[n]);
 	free(str);
-	return (0);
+	return (NULL);
 }
 
-static	char	**ft_strsplit2(char *str, char c)
+static char	**ft_strsplit2(char *str, char c)
 {
 	char	**chr;
 	char	*chr2;
 	int		j;
 
 	j = 0;
-	if (!(chr = (char**)ft_memalloc(sizeof(chr) * (ft_words(str, c) + 1))))
-		return (0);
+	chr = (char **)ft_memalloc(sizeof(chr) * (ft_words(str, c) + 1));
+	if (!chr)
+		return (NULL);
 	while (str[0] != '\0')
 	{
-		if (!(chr[j] = ft_strnew(ft_lenword(str, c))))
+		if (is_null(ft_strnew(ft_lenword(str, c)), (void **) &chr[j]))
 			return (ft_free_table(chr));
 		chr2 = chr[j];
 		while (str[0] != '\0' && str[0] != c)
@@ -81,7 +82,7 @@ static	char	**ft_strsplit2(char *str, char c)
 	return (chr);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	*str;
 

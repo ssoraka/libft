@@ -14,7 +14,7 @@
 
 static int	ft_char_check(char chr, char *skip)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (skip[i])
@@ -26,9 +26,9 @@ static int	ft_char_check(char chr, char *skip)
 	return (0);
 }
 
-char		*ft_skip_chrs(char *str, char *skip)
+char	*ft_skip_chrs(char *str, char *skip)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str == 0)

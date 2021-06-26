@@ -12,16 +12,16 @@
 
 #include "libft.h"
 
-static void		ft_del_content(void *mem, size_t size)
+static void	ft_del_content(void *mem, size_t size)
 {
 	ft_bzero(mem, size);
 	ft_memdel(&mem);
 }
 
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *begin_list;
-	t_list *list;
+	t_list	*begin_list;
+	t_list	*list;
 
 	if (lst == 0)
 		return (0);
@@ -32,7 +32,8 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	while (begin_list && lst->next != NULL)
 	{
 		lst = lst->next;
-		if ((list->next = f(lst)) == 0)
+		list->next = f(lst);
+		if (list->next == 0)
 		{
 			ft_lstdel(&begin_list, &ft_del_content);
 			return (begin_list);

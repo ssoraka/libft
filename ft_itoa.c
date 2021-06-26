@@ -27,7 +27,7 @@ static int	ft_numlen(int n)
 	return (count);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		num;
@@ -37,7 +37,8 @@ char		*ft_itoa(int n)
 	znak = 1;
 	if (n < 0)
 		znak = -1;
-	if (!(str = ft_strnew(num)))
+	str = ft_strnew(num);
+	if (!str)
 		return (NULL);
 	if (n < 0)
 		str[0] = '-';

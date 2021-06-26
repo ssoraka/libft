@@ -13,7 +13,7 @@
 #include "collections_header.h"
 #include "collections_help_header.h"
 
-int		ft_hashmap_put(t_hmap *hmap, void *key, void *value)
+int	ft_hashmap_put(t_hmap *hmap, void *key, void *value)
 {
 	int		index;
 	void	*list;
@@ -51,7 +51,8 @@ t_hmap	*ft_create_hashmap(int (*func_hash)(void *), t_ilist *list)
 
 	if (!func_hash || !list)
 		return (NULL);
-	if (!(hmap = ft_memalloc(sizeof(t_hmap))))
+	hmap = ft_memalloc(sizeof(t_hmap));
+	if (!hmap)
 		return (NULL);
 	hmap->func_hash = func_hash;
 	ft_memcpy((void *)&hmap->list, (void *)list, sizeof(t_ilist));

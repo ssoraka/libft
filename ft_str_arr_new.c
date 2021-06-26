@@ -18,11 +18,13 @@ char	**ft_str_arr_new(int row, int column)
 	char	**str;
 
 	i = 0;
-	if ((str = (char**)ft_memalloc(sizeof(str) * (row + 1))) == NULL)
+	str = (char **)ft_memalloc(sizeof(str) * (row + 1));
+	if (str == NULL)
 		return (0);
 	while (i < row)
 	{
-		if ((str[i] = ft_strnew(column)) == NULL)
+		str[i] = ft_strnew(column);
+		if (str[i] == NULL)
 		{
 			ft_str_arr_free(&str);
 			return (0);

@@ -22,7 +22,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	if (max - ft_strlen(s1) < ft_strlen(s2))
 		return (NULL);
-	if (!(str = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+	str = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
+	if (!str)
 		return (NULL);
 	ft_strcpy(str, s1);
 	ft_strcat(str, s2);

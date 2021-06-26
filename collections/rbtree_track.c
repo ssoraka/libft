@@ -29,9 +29,9 @@ void	*ft_rbtree_get_next(t_rbtr *tree)
 		tree->next = ft_find_left_value(tree->next);
 	}
 	else if (tree->next->parent != &tree->root
-			&& tree->next == tree->next->parent->left)
+		&& tree->next == tree->next->parent->left)
 		tree->next = tree->next->parent;
-	else if ((tree->next = tree->next->parent->right))
+	else if (is_null(tree->next->parent->right, (void **) &tree->next))
 	{
 		while (tree->next != tree->next->parent->left)
 			tree->next = tree->next->parent;
@@ -46,21 +46,21 @@ void	*ft_rbtree_get_next(t_rbtr *tree)
 }
 
 void	ft_rbtree_prefix(t_rbtr *tree,
-		void (*func)(void *, void *), void *param)
+			void (*func)(void *, void *), void *param)
 {
 	if (tree->root.left)
 		ft_tnode_prefix(tree->root.left, func, param);
 }
 
 void	ft_rbtree_postfix(t_rbtr *tree,
-		void (*func)(void *, void *), void *param)
+			void (*func)(void *, void *), void *param)
 {
 	if (tree->root.left)
 		ft_tnode_postfix(tree->root.left, func, param);
 }
 
 void	ft_rbtree_infix(t_rbtr *tree,
-		void (*func)(void *, void *), void *param)
+			void (*func)(void *, void *), void *param)
 {
 	if (tree->root.left)
 		ft_tnode_infix(tree->root.left, func, param);

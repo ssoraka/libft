@@ -14,7 +14,7 @@
 
 void	ft_swap(int *a, int *b)
 {
-	int temp;
+	int	temp;
 
 	if (!a || !b)
 		return ;

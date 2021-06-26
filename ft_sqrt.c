@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t		ft_sqrt(size_t nb)
+size_t	ft_sqrt(size_t nb)
 {
 	size_t	root;
 	size_t	root2;
@@ -22,8 +22,12 @@ size_t		ft_sqrt(size_t nb)
 	if (nb == 1)
 		return (1);
 	root = nb >> 1;
-	while (root != (root2 = nb / root))
+	root2 = nb / root;
+	while (root != root2)
+	{
 		root = ((root + root2) >> 1);
+		root2 = nb / root;
+	}
 	if (nb % root)
 		return (0);
 	return (root);

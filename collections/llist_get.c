@@ -27,8 +27,8 @@ void	*ft_llist_get_next(t_llist *list)
 void	ft_for_each_llist(t_llist *list,
 		void (*func)(void *, void *), void *param)
 {
-	t_lnode *node;
-	t_lnode *end;
+	t_lnode	*node;
+	t_lnode	*end;
 
 	if (!func || !list)
 		return ;
@@ -43,7 +43,7 @@ void	ft_for_each_llist(t_llist *list,
 
 void	*ft_llist_get(t_llist *list, int num)
 {
-	t_lnode *node;
+	t_lnode	*node;
 
 	if (!list)
 		return (NULL);

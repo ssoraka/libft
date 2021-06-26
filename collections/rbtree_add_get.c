@@ -15,8 +15,8 @@
 
 void	ft_rbtree_insert(t_rbtr *tree, t_tnode *node)
 {
-	t_tnode *tmp;
-	t_tnode **current;
+	t_tnode	*tmp;
+	t_tnode	**current;
 
 	if (!tree || !node)
 		return ;
@@ -37,11 +37,12 @@ void	ft_rbtree_insert(t_rbtr *tree, t_tnode *node)
 
 t_bool	ft_rbtree_add(t_rbtr *tree, void *key, void *value)
 {
-	t_tnode *node;
+	t_tnode	*node;
 
 	if (!tree || !value)
 		return (FALSE);
-	if (!(node = ft_create_tnode(key, value)))
+	node = ft_create_tnode(key, value);
+	if (!node)
 		return (FALSE);
 	ft_rbtree_insert(tree, node);
 	ft_tnode_rebalance(node);

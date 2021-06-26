@@ -15,7 +15,7 @@
 
 t_tnode	*ft_create_tnode(void *key, void *value)
 {
-	t_tnode *node;
+	t_tnode	*node;
 
 	node = ft_memalloc(sizeof(t_tnode));
 	if (node)

@@ -37,8 +37,8 @@ void	ft_del_arr(t_arr **arr)
 
 void	ft_del_elem(t_arr *arr, int num)
 {
-	void *dst;
-	void *src;
+	void	*dst;
+	void	*src;
 
 	if (!arr || !arr->elems_used || num < 0 || num >= arr->elems_used)
 		return ;

@@ -25,7 +25,7 @@ t_lnode	*ft_create_lnode(void *value)
 
 void	ft_insert_lnode(t_lnode *node, t_lnode *before)
 {
-	t_lnode *after;
+	t_lnode	*after;
 
 	if (!node || !before)
 		return ;
@@ -61,7 +61,7 @@ void	ft_del_lnode(t_lnode **node, void (*func_del)(void *))
 
 t_lnode	*ft_lnode_get(int num, int count, t_lnode *start, t_lnode *end)
 {
-	t_lnode *node;
+	t_lnode	*node;
 
 	if (num < 0 || num >= count)
 		return (NULL);

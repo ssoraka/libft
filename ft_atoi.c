@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	size_t	i;
 	size_t	nb;
@@ -41,9 +41,9 @@ int		ft_atoi(const char *str)
 	return (znak * nb);
 }
 
-int		get_digit(char c, int base)
+int	get_digit(char c, int base)
 {
-	int num;
+	int	num;
 
 	if (c >= '0' && c <= '9')
 		num = c - '0';
@@ -59,11 +59,11 @@ int		get_digit(char c, int base)
 		return (-1);
 }
 
-int		ft_atoi_base(const char *str, int base)
+int	ft_atoi_base(const char *str, int base)
 {
-	int result;
-	int sign;
-	int digit;
+	int	result;
+	int	sign;
+	int	digit;
 
 	result = 0;
 	if (!str || base <= 0)
@@ -76,8 +76,11 @@ int		ft_atoi_base(const char *str, int base)
 		sign = -1;
 		++str;
 	}
-	while (*str && (digit = get_digit(*str, base)) >= 0)
+	while (*str)
 	{
+		digit = get_digit(*str, base);
+		if (digit == -1)
+			break ;
 		result = result * base;
 		result = result + (digit * sign);
 		str++;

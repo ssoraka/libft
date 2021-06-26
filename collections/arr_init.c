@@ -23,7 +23,7 @@ void	*ft_return_ptr(void *elem)
 	return (*((void **)elem));
 }
 
-int		ft_init_arr(t_arr *arr, int elem_size, int elems_count,
+int	ft_init_arr(t_arr *arr, int elem_size, int elems_count,
 						void (*func_del)(void *))
 {
 	if (!arr)
@@ -35,7 +35,8 @@ int		ft_init_arr(t_arr *arr, int elem_size, int elems_count,
 	arr->elem_size = elem_size;
 	arr->func_del = func_del;
 	arr->next = NEXT_START;
-	if ((arr->elems = ft_memalloc(elem_size * elems_count)))
+	arr->elems = ft_memalloc(elem_size * elems_count);
+	if (arr->elems)
 		arr->current = (char *)arr->elems - arr->elem_size;
 	else if (elems_count)
 		return (FALSE);
