@@ -95,6 +95,7 @@ ft_strlowcase.c \
 ft_max.c \
 ft_min.c \
 ft_swap.c \
+ft_is_null.c \
 collections/arr_init.c collections/arr_del.c collections/arr_each.c \
 collections/arr_get.c collections/arr_add.c \
 collections/hmap.c collections/hmap2.c \
