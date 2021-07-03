@@ -38,29 +38,29 @@ void	ft_del_arr_without_del_content(t_arr *arr, t_ilist *ilist)
 
 int	ft_increase_hmap(t_hmap *hmap)
 {
-	t_hmap	tmp;
+	t_hmap	t;
 	void	*list;
 	void	*value;
 	void	*key;
 
-	ft_memcpy((void *)&tmp, hmap, sizeof(t_hmap));
-	tmp.elems_used = 0;
-	tmp.max_load = tmp.arr->elems_used * 2 * HASHMAP_LOAD;
-	if (is_null(ft_create_arr_of_elems((void *)tmp.list.mem, hmap->list.size,
-				hmap->arr->elems_used << 1, hmap->list.del), (void **) &tmp.arr))
+	ft_memcpy((void *)&t, hmap, sizeof(t_hmap));
+	t.elems_used = 0;
+	t.max_load = t.arr->elems_used * 2 * HASHMAP_LOAD;
+	if (is_null(ft_create_arr_of_elems((void *)t.list.mem, hmap->list.size,
+				hmap->arr->elems_used << 1, hmap->list.del), (void **) &t.arr))
 		return (FALSE);
 	while (!is_null(ft_arr_get_next(hmap->arr), &list))
 	{
 		while (hmap->list.get_next(list, &key, &value))
 		{
-			if (!ft_hashmap_put(&tmp, key, value))
+			if (!ft_hashmap_put(&t, key, value))
 			{
-				ft_del_arr_without_del_content(tmp.arr, &tmp.list);
+				ft_del_arr_without_del_content(t.arr, &t.list);
 				return (FALSE);
 			}
 		}
 	}
 	ft_del_arr_without_del_content(hmap->arr, &hmap->list);
-	ft_memcpy((void *)hmap, (void *)&tmp, sizeof(t_hmap));
+	ft_memcpy((void *)hmap, (void *)&t, sizeof(t_hmap));
 	return (TRUE);
 }
