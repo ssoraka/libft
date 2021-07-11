@@ -31,6 +31,8 @@ void	ft_del_llist_elem(t_llist *list, int num);
 int		ft_insert_llist(t_llist *list, void *elem, int num);
 void	ft_del_llist(t_llist **list);
 
+t_iter	get_llist_iter(t_llist *list);
+
 void	ft_del_arr(t_arr **arr);
 int		ft_init_arr(t_arr *arr,
 			int elem_size, int elems_count, void (*func_del)(void *));
@@ -47,6 +49,8 @@ void	ft_del_elems_if(t_arr *arr,
 void	ft_for_each_elem(t_arr *arr, void (*func)(void *, void *), void *param);
 int		ft_arr_init_by_value(t_arr *arr, int count, void *value);
 void	ft_all_arr_init_by_value(t_arr *arr, void *value);
+
+t_iter	get_arr_iter(t_arr *arr);
 
 t_rbtr	*ft_create_rbtree(int (*func_cmp)(t_old_key *, t_new_key *),
 			void (*func_del)(t_old_key *, t_old_elem *));

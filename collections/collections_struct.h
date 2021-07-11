@@ -93,4 +93,12 @@ typedef struct s_rbtr
 	int				elems_count;
 }					t_rbtr;
 
+typedef struct s_iter
+{
+	t_bool			(*get_next_elem)(struct s_iter *iter);
+	void			*elem;
+	void			*value;
+	void			*collection;
+}					t_iter;
+
 #endif

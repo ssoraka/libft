@@ -90,6 +90,7 @@ void	*ft_arr_add(t_arr *arr, void *elem);
 void	*ft_arr_get_addr(t_arr *arr, int num);
 void	*ft_arr_get(t_arr *arr, int num);
 void	*ft_arr_get_next(t_arr *arr);
+
 /*
 ** arr_del.c
 */

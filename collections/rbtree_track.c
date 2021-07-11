@@ -14,7 +14,7 @@
 #include "collections_help_header.h"
 
 /*
-** надо исправить эту функцию
+** todo надо исправить эту функцию
 */
 
 void	*ft_rbtree_get_next(t_rbtr *tree)
@@ -31,7 +31,7 @@ void	*ft_rbtree_get_next(t_rbtr *tree)
 	else if (tree->next->parent != &tree->root
 		&& tree->next == tree->next->parent->left)
 		tree->next = tree->next->parent;
-	else if (is_null(tree->next->parent->right, (void **) &tree->next))
+	else if ((tree->next = tree->next->parent->right))
 	{
 		while (tree->next != tree->next->parent->left)
 			tree->next = tree->next->parent;
