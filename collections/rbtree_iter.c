@@ -11,32 +11,56 @@
 /* ************************************************************************** */
 
 #include "collections_header.h"
+#include "collections_help_header.h"
 
-void	*get_next_llist_elem(t_iter *iter)
+t_tnode	*ft_rbtree_get_next_node(t_rbtr *tree, t_tnode *node)
 {
-	t_llist	*list;
-	t_lnode	*node;
+	if (node->right)
+	{
+		node = node->right;
+		node = ft_find_left_value(node);
+	}
+	else if (node->parent != &tree->root && node == node->parent->left)
+		node = node->parent;
+	else
+	{
+		while (node != node->parent->left)
+			node = node->parent;
+		if (node->parent == &tree->root)
+			node = NULL;
+		else
+			node = node->parent;
+	}
+	return (node);
+}
+
+void	*get_next_rbtree_elem(t_iter *iter)
+{
+	t_rbtr	*tree;
+	t_tnode	*node;
 
 	iter->value = NULL;
-	node = (t_lnode *)iter->elem;
-	list = (t_llist *)iter->collection;
+	iter->key = NULL;
+	node = (t_tnode *)iter->elem;
+	tree = (t_rbtr *)iter->collection;
+	if (!node && tree->root.left)
+		node = ft_find_left_value(tree->root.left);
+	else if (node)
+		node = ft_rbtree_get_next_node(tree, node);
 	if (!node)
-		node = list->start.next;
-	else
-		node = node->next;
-	if (node == &list->end)
 		return (NULL);
 	iter->value = node->elem;
+	iter->key = node->key;
 	iter->elem = node;
 	return (iter->value);
 }
 
-t_iter	get_llist_iter(t_llist *list)
+t_iter	get_rbtree_iter(t_rbtr *tree)
 {
 	t_iter	iter;
 
 	ft_bzero(&iter, sizeof(t_iter));
-	iter.collection = list;
-	iter.get_next_elem = get_next_llist_elem;
+	iter.collection = tree;
+	iter.get_next_elem = get_next_rbtree_elem;
 	return (iter);
 }

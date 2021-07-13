@@ -188,6 +188,7 @@ int		ft_for_each_elems(t_llist *list)
 	int i[3];
 	int *ptr;
 	int answer;
+	t_iter iter;
 
 	i[0] = 3;
 	i[1] = 2;
@@ -196,11 +197,13 @@ int		ft_for_each_elems(t_llist *list)
 	ft_fill_list_by_arr_in_reverse_order(list, i, 3);
 
 	answer = 0;
-	while ((ptr = (int *)ft_llist_get_next(list)))
+	iter = get_llist_iter(list);
+	while ((ptr = (int *)iter.get_next_elem(&iter)))
 		answer = answer * *ptr + *ptr;
 	if (answer != (1*2 + 2) * 3 + 3)
 		return (FAIL);
-	while ((ptr = (int *)ft_llist_get_next(list)))
+	iter = get_llist_iter(list);
+	while ((ptr = (int *)iter.get_next_elem(&iter)))
 		answer = answer * *ptr + *ptr;
 	if (answer == ((15 * 1 + 1) * 2 + 2) * 3 + 3)
 		return (SUCCESS);

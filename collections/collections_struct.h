@@ -25,11 +25,18 @@ typedef void	t_new_key;
 typedef void	t_old_key;
 typedef int		t_bool;
 
+typedef struct s_iter
+{
+	void			*(*get_next_elem)(struct s_iter *iter);
+	void			*elem;
+	void			*value;
+	void			*key;
+	void			*collection;
+}					t_iter;
+
 typedef struct s_arr
 {
 	void			*elems;
-	char			*current;
-	size_t			next;
 	size_t			elems_count;
 	int				elems_used;
 	int				elem_size;
@@ -48,7 +55,6 @@ typedef struct s_llist
 {
 	struct s_lnode	start;
 	struct s_lnode	end;
-	struct s_lnode	*current;
 	size_t			elems_count;
 	void			(*func_del)(void *);
 }					t_llist;
@@ -59,8 +65,8 @@ typedef struct s_ilist
 	int				(*add)(void *, void *, void *);
 	void			*(*find)(void *, void *);
 	void			(*del)(void *);
-	int				(*get_next)(void *, void **, void **);
 	void			(*del_list_without_key_value)(void *);
+	t_iter			(*iterator)(void *);
 	int				size;
 }					t_ilist;
 
@@ -87,18 +93,9 @@ typedef struct s_tnode
 typedef struct s_rbtr
 {
 	struct s_tnode	root;
-	struct s_tnode	*next;
 	int				(*func_cmp)(t_old_key *, t_new_key *);
 	void			(*func_del)(t_old_key *, t_old_elem *);
 	int				elems_count;
 }					t_rbtr;
-
-typedef struct s_iter
-{
-	t_bool			(*get_next_elem)(struct s_iter *iter);
-	void			*elem;
-	void			*value;
-	void			*collection;
-}					t_iter;
 
 #endif

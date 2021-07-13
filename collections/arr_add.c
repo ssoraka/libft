@@ -28,7 +28,6 @@ int	ft_realloc_arr(t_arr *arr, size_t new_count)
 	free(arr->elems);
 	arr->elems = tmp;
 	arr->elems_count = new_count;
-	arr->current = (char *)arr->elems - arr->elem_size;
 	return (TRUE);
 }
 

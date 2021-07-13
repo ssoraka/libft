@@ -13,17 +13,6 @@
 #include "collections_header.h"
 #include "collections_help_header.h"
 
-void	*ft_llist_get_next(t_llist *list)
-{
-	if (!list)
-		return (NULL);
-	list->current = list->current->next;
-	if (list->current != &list->end)
-		return (list->current->elem);
-	list->current = &list->start;
-	return (NULL);
-}
-
 void	ft_for_each_llist(t_llist *list,
 		void (*func)(void *, void *), void *param)
 {

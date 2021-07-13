@@ -28,10 +28,9 @@ void	ft_ilist_set_del(t_ilist *ilist, void (*del)(void *))
 	ilist->del = del;
 }
 
-void	ft_ilist_set_get_next(t_ilist *list,
-		int (*get_next)(void *, void **, void **))
+void	ft_ilist_set_iterator(t_ilist *list, t_iter (*iterator)(void *))
 {
-	list->get_next = get_next;
+	list->iterator = iterator;
 }
 
 void	ft_ilist_set_func_for_resize_map(t_ilist *list,

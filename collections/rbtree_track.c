@@ -17,34 +17,6 @@
 ** todo надо исправить эту функцию
 */
 
-void	*ft_rbtree_get_next(t_rbtr *tree)
-{
-	if (!tree || !tree->elems_count)
-		return (NULL);
-	if (!tree->next)
-		tree->next = ft_find_left_value(tree->root.left);
-	else if (tree->next->right)
-	{
-		tree->next = tree->next->right;
-		tree->next = ft_find_left_value(tree->next);
-	}
-	else if (tree->next->parent != &tree->root
-		&& tree->next == tree->next->parent->left)
-		tree->next = tree->next->parent;
-	else if ((tree->next = tree->next->parent->right))
-	{
-		while (tree->next != tree->next->parent->left)
-			tree->next = tree->next->parent;
-		if (tree->next->parent == &tree->root)
-			tree->next = NULL;
-		else
-			tree->next = tree->next->parent;
-	}
-	if (tree->next)
-		return (tree->next->elem);
-	return (NULL);
-}
-
 void	ft_rbtree_prefix(t_rbtr *tree,
 			void (*func)(void *, void *), void *param)
 {

@@ -21,24 +21,24 @@ LIBFT = ./../libft.a
 LIBFT_HEADER = -I ./../
 
 
-all: libs_refresh thmap ttree tarr tlist fclean
+all: libs_refresh $(NAME4) $(NAME3) $(NAME2) $(NAME1) fclean
 
 libs_refresh:
 	@make -C ./../
 
-thmap: $(NAME4) ./hmap_main_test.c $(LIBFT)
+$(NAME4): ./hmap_main_test.c $(LIBFT)
 	gcc -o $(NAME4) ./hmap_main_test.c $(LIBFT) $(LIBFT_HEADER)
 	./$(NAME4)
 
-ttree: $(NAME3) ./rbtree_main_test.c $(LIBFT)
+$(NAME3):  ./rbtree_main_test.c $(LIBFT)
 	gcc -o $(NAME3) ./rbtree_main_test.c $(LIBFT) $(LIBFT_HEADER)
 	./$(NAME3)
 
-tarr: $(NAME2) ./arr_main_test.c $(LIBFT)
+$(NAME2):  ./arr_main_test.c $(LIBFT)
 	gcc -o $(NAME2) ./arr_main_test.c $(LIBFT) $(LIBFT_HEADER)
 	./$(NAME2)
 
-tlist: $(NAME1) ./list_main_test.c $(LIBFT)
+$(NAME1):  ./list_main_test.c $(LIBFT)
 	gcc -o $(NAME1) ./list_main_test.c $(LIBFT) $(LIBFT_HEADER)
 	./$(NAME1)
 

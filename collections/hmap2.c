@@ -28,20 +28,35 @@ t_arr	*ft_create_arr_of_elems(void *value, int elem_size,
 
 void	ft_del_arr_without_del_content(t_arr *arr, t_ilist *ilist)
 {
-	void	*elem;
+	t_iter	iter;
 
-	while (!is_null(ft_arr_get_next(arr), &elem))
-		ilist->del_list_without_key_value(elem);
+	iter = get_arr_iter(arr);
+	while (iter.get_next_elem(&iter))
+		ilist->del_list_without_key_value(iter.value);
 	arr->func_del = NULL;
 	ft_del_arr(&arr);
+}
+
+t_bool	move_elements(t_hmap *map, t_ilist *from)
+{
+	t_iter	iter;
+
+	iter = map->list.iterator(from->mem);
+	while (iter.get_next_elem(&iter))
+	{
+		if (!ft_hashmap_put(map, iter.key, iter.value))
+		{
+			ft_del_arr_without_del_content(map->arr, &map->list);
+			return (FALSE);
+		}
+	}
+	return (TRUE);
 }
 
 int	ft_increase_hmap(t_hmap *hmap)
 {
 	t_hmap	t;
-	void	*list;
-	void	*value;
-	void	*key;
+	t_iter	iter;
 
 	ft_memcpy((void *)&t, hmap, sizeof(t_hmap));
 	t.elems_used = 0;
@@ -49,16 +64,11 @@ int	ft_increase_hmap(t_hmap *hmap)
 	if (is_null(ft_create_arr_of_elems((void *)t.list.mem, hmap->list.size,
 				hmap->arr->elems_used << 1, hmap->list.del), (void **) &t.arr))
 		return (FALSE);
-	while (!is_null(ft_arr_get_next(hmap->arr), &list))
+	iter = get_arr_iter(hmap->arr);
+	while (iter.get_next_elem(&iter))
 	{
-		while (hmap->list.get_next(list, &key, &value))
-		{
-			if (!ft_hashmap_put(&t, key, value))
-			{
-				ft_del_arr_without_del_content(t.arr, &t.list);
-				return (FALSE);
-			}
-		}
+		if (!move_elements(&t, (t_ilist *)iter.value))
+			return (FALSE);
 	}
 	ft_del_arr_without_del_content(hmap->arr, &hmap->list);
 	ft_memcpy((void *)hmap, (void *)&t, sizeof(t_hmap));

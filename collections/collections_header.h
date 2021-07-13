@@ -18,7 +18,6 @@
 
 t_llist	*ft_create_llist(void (*func_del)(void *));
 void	ft_init_llist(t_llist	*llist, void (*func_del)(void *));
-void	*ft_llist_get_next(t_llist *list);
 int		ft_llist_dpush(t_llist *list, void *elem);
 int		ft_llist_push(t_llist *list, void *elem);
 void	*ft_llist_pop(t_llist *list);
@@ -42,7 +41,6 @@ t_arr	*ft_create_arr_of_ptr(int elems_count, void (*func_del)(void *));
 int		ft_realloc_arr(t_arr *arr, size_t new_count);
 void	*ft_arr_add(t_arr *arr, void *elem);
 void	*ft_arr_get(t_arr *arr, int num);
-void	*ft_arr_get_next(t_arr *arr);
 void	ft_del_elem(t_arr *arr, int num);
 void	ft_del_elems_if(t_arr *arr,
 			int (*need_del)(void *, void *), void *param);
@@ -60,7 +58,6 @@ void	ft_del_rbtree(t_rbtr **tree);
 void	ft_del_rbtree_nodes(t_rbtr *tree);
 void	ft_rbtree_insert(t_rbtr *tree, t_tnode *node);
 t_bool	ft_rbtree_add(t_rbtr *tree, void *key, void *value);
-void	*ft_rbtree_get_next(t_rbtr *tree);
 void	*ft_rbtree_get_elem(t_rbtr *tree, void *key);
 void	ft_rbtree_prefix(t_rbtr *tree,
 			void (*func)(t_old_elem *, void *), void *param);
@@ -69,14 +66,16 @@ void	ft_rbtree_postfix(t_rbtr *tree,
 void	ft_rbtree_suffix(t_rbtr *tree,
 			void (*func)(t_old_elem *, void *), void *param);
 
+t_iter	get_rbtree_iter(t_rbtr *tree);
+
 void	ft_ilist_set_add(t_ilist *ilist, int (*add)(void *, void *, void *));
 void	ft_ilist_set_get(t_ilist *ilist, void *(*find)(void *, void *));
 void	ft_ilist_set_del(t_ilist *ilist, void (*del)(void *));
 void	ft_ilist_set_list(t_ilist *ilist, void *list, int elem_size);
-void	ft_ilist_set_get_next(t_ilist *list,
-			int (*get_next)(void *, void **, void **));
 void	ft_ilist_set_func_for_resize_map(t_ilist *list,
 			void (*del_list_without_key_value)(void *));
+
+void	ft_ilist_set_iterator(t_ilist *list, t_iter (*iterator)(void *));
 
 t_hmap	*ft_create_hashmap(int (*func_hash)(void *), t_ilist *list);
 int		ft_hashmap_put(t_hmap *hmap, void *key, void *value);

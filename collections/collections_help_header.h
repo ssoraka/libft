@@ -17,7 +17,6 @@
 
 # define ARR_REALLOC_COEF 1.5
 # define ARR_FIRST_COUNT 16
-# define NEXT_START -1
 # define SIZE_OF_PTR 8
 
 # define HASHMAP_REALLOC_COEF 2.0

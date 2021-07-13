@@ -26,19 +26,3 @@ void	*ft_arr_get_addr(t_arr *arr, int num)
 		return (NULL);
 	return (arr->elems + arr->elem_size * num);
 }
-
-void	*ft_arr_get_next(t_arr *arr)
-{
-	if (!arr || !arr->elems)
-		return (NULL);
-	(arr->next)++;
-	if (arr->next < (size_t)arr->elems_used)
-		arr->current += arr->elem_size;
-	else
-	{
-		arr->next = NEXT_START;
-		arr->current = (char *)arr->elems - arr->elem_size;
-		return (NULL);
-	}
-	return (arr->value((void *)arr->current));
-}

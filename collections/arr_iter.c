@@ -12,10 +12,12 @@
 
 #include "collections_header.h"
 
-t_bool	get_next_arr_elem(t_iter *iter) {
+void	*get_next_arr_elem(t_iter *iter)
+{
 	t_arr	*arr;
 	void	*elem;
 
+	iter->value = NULL;
 	elem = iter->elem;
 	arr = (t_arr *)iter->collection;
 	if (!elem)
@@ -23,13 +25,14 @@ t_bool	get_next_arr_elem(t_iter *iter) {
 	else
 		elem = (char *)elem + arr->elem_size;
 	if ((char *)elem >= (char *)arr->elems + arr->elem_size * arr->elems_used)
-		return (FALSE);
+		return (NULL);
 	iter->value = arr->value(elem);
 	iter->elem = elem;
-	return (TRUE);
+	return (iter->value);
 }
 
-t_iter	get_arr_iter(t_arr *arr) {
+t_iter	get_arr_iter(t_arr *arr)
+{
 	t_iter	iter;
 
 	ft_bzero(&iter, sizeof(t_iter));

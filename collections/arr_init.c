@@ -34,11 +34,8 @@ int	ft_init_arr(t_arr *arr, int elem_size, int elems_count,
 	arr->elems_used = 0;
 	arr->elem_size = elem_size;
 	arr->func_del = func_del;
-	arr->next = NEXT_START;
 	arr->elems = ft_memalloc(elem_size * elems_count);
-	if (arr->elems)
-		arr->current = (char *)arr->elems - arr->elem_size;
-	else if (elems_count)
+	if (!arr->elems)
 		return (FALSE);
 	return (TRUE);
 }

@@ -21,7 +21,6 @@ void	ft_init_llist(t_llist *llist, void (*func_del)(void *))
 	llist->start.prev = &llist->end;
 	llist->end.next = &llist->start;
 	llist->end.prev = &llist->start;
-	llist->current = &llist->start;
 	llist->func_del = func_del;
 	llist->elems_count = 0;
 }

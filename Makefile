@@ -107,7 +107,7 @@ collections/tnode_track.c collections/tnode_init_del.c \
 collections/tnode_rebalance.c collections/tnode_rbtree_property.c \
 collections/rbtree_add_get.c collections/rbtree_del.c \
 collections/rbtree_track.c collections/rbtree_init.c \
-collections/arr_iter.c collections/llist_iter.c
+collections/arr_iter.c collections/llist_iter.c collections/rbtree_iter.c
 OBJS = $(SRC:.c=.o)
 
 .PHONY: clean all fclean re

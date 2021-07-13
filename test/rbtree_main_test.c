@@ -153,6 +153,7 @@ int		ft_iterator(t_rbtr *tree)
 	int *ptr;
 	int v[8];
 	int i;
+	t_iter iter;
 
 	i = -1;
 	while (++i < 8)
@@ -161,9 +162,13 @@ int		ft_iterator(t_rbtr *tree)
 		ft_rbtree_add(tree, (void *)(v + i), (void *)(v + i));
 	}
 	i = -1;
-	while ((ptr = (int *)ft_rbtree_get_next(tree)))
+	iter = get_rbtree_iter(tree);
+	while ((ptr = (int *)iter.get_next_elem(&iter)))
+	{
 		if (*ptr != ++i)
 			return(FAIL);
+	}
+
 	return (SUCCESS);
 }
 

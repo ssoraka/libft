@@ -213,6 +213,7 @@ int		ft_while_arr_get_next(t_arr *arr)
 	int i[3];
 	int *ptr;
 	int answer;
+	t_iter iter;
 
 	i[0] = 1;
 	i[1] = 2;
@@ -223,11 +224,13 @@ int		ft_while_arr_get_next(t_arr *arr)
 	ft_arr_add(arr, (void *)(i + 2));
 
 	answer = 0;
-	while ((ptr = (int *)ft_arr_get_next(arr)))
+	iter = get_arr_iter(arr);
+	while ((ptr = iter.get_next_elem(&iter)))
 		answer = answer * *ptr + *ptr;
 	if (answer != (1*2 + 2) * 3 + 3)
 		return (FAIL);
-	while ((ptr = (int *)ft_arr_get_next(arr)))
+	iter = get_arr_iter(arr);
+	while ((ptr = iter.get_next_elem(&iter)))
 		answer = answer * *ptr + *ptr;
 	if (answer == ((15 * 1 + 1) * 2 + 2) * 3 + 3)
 		return (SUCCESS);
