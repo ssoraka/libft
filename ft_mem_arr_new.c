@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_arr_new.c                                   :+:      :+:    :+:   */
+/*   ft_mem_arr_new.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,24 +12,24 @@
 
 #include "libft.h"
 
-int	**ft_int_arr_new(int row, int column)
+void	**ft_mem_arr_new(int row, int column, int size)
 {
 	int		i;
-	int		**tab;
+	void	**tab;
 
-	i = 0;
-	tab = (int **)ft_memalloc(sizeof(tab) * row);
+	tab = (void **)ft_memalloc(sizeof(void *) * (row + 1));
 	if (tab == NULL)
-		return (0);
+		return (NULL);
+	i = 0;
 	while (i < row)
 	{
-		tab[i] = (int *)ft_memalloc(sizeof(*tab) * column);
+		tab[i] = (void *)ft_memalloc(size * column);
 		if (tab[i] == NULL)
 		{
-			ft_int_arr_free(&tab, i - 1);
+			ft_mem_arr_free((void ***)&tab);
 			return (0);
 		}
 		i++;
 	}
-	return (tab);
+	return ((void **)tab);
 }

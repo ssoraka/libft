@@ -21,13 +21,13 @@ void	ft_for_each_elem(t_arr *arr, void (*func)(void *, void *), void *param)
 	if (!arr || !arr->elems || !func)
 		return ;
 	elem = arr->elems;
-	i = 0;
-	while (i < arr->elems_used)
+	i = arr->elems_used;
+	while (i > 0)
 	{
 		if ((arr->value(elem)))
 			func(arr->value(elem), param);
 		elem += arr->elem_size;
-		i++;
+		i--;
 	}
 }
 

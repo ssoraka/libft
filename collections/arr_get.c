@@ -13,14 +13,14 @@
 #include "collections_header.h"
 #include "collections_help_header.h"
 
-void	*ft_arr_get(t_arr *arr, int num)
+void	*ft_arr_get(t_arr *arr, size_t num)
 {
 	if (!arr || num < 0 || arr->elems_used < num + 1)
 		return (NULL);
 	return (arr->value(arr->elems + arr->elem_size * num));
 }
 
-void	*ft_arr_get_addr(t_arr *arr, int num)
+void	*ft_arr_get_addr(t_arr *arr, size_t num)
 {
 	if (!arr || num < 0 || arr->elems_used < num + 1)
 		return (NULL);

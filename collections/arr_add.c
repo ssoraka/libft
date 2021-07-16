@@ -13,7 +13,7 @@
 #include "collections_header.h"
 #include "collections_help_header.h"
 
-int	ft_realloc_arr(t_arr *arr, size_t new_count)
+t_bool	ft_realloc_arr(t_arr *arr, size_t new_count)
 {
 	void	*tmp;
 
@@ -37,10 +37,10 @@ void	*ft_arr_add(t_arr *arr, void *elem)
 
 	if (!arr || !elem)
 		return (NULL);
-	if ((size_t)arr->elems_used == arr->elems_count)
+	if (arr->elems_used == arr->elems_count)
 		if (!ft_realloc_arr(arr, arr->elems_count * ARR_REALLOC_COEF + 1))
 			return (NULL);
-	tmp = (char *)arr->elems + ((size_t)arr->elems_used) * arr->elem_size;
+	tmp = (char *)arr->elems + arr->elems_used * arr->elem_size;
 	if (arr->value == ft_return_ptr)
 		ft_memcpy8((void *)tmp, &elem, arr->elem_size);
 	else

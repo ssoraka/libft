@@ -104,7 +104,7 @@ int		ft_three_add_and_del_str(t_arr *arr)
 
 int		ft_two_add_and_four_del_str(t_arr *arr)
 {
-	ft_init_arr(arr, 8, -10, &func_del_str);
+	ft_init_arr(arr, 8, 0, &func_del_str);
 	if (ft_one_add_str(arr) == SUCCESS
 	&& ft_one_add_str(arr) == SUCCESS
 	&& ft_one_del_first_str(arr) == SUCCESS

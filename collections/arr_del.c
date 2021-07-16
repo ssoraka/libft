@@ -35,7 +35,7 @@ void	ft_del_arr(t_arr **arr)
 	}
 }
 
-void	ft_del_elem(t_arr *arr, int num)
+void	ft_del_elem(t_arr *arr, size_t num)
 {
 	void	*dst;
 	void	*src;
@@ -47,10 +47,10 @@ void	ft_del_elem(t_arr *arr, int num)
 	src = arr->elems + arr->elem_size * arr->elems_used;
 	if (arr->func_del)
 		arr->func_del(arr->value(dst));
-	ft_memcpy(dst, src, arr->elem_size);
+	ft_memcpy8(dst, src, arr->elem_size);
 }
 
-void	ft_del_elems_if(t_arr *arr, int (*need_del)(void *, void *),
+void	ft_del_elems_if(t_arr *arr, t_bool (*need_del)(void *, void *),
 		void *param)
 {
 	int		i;

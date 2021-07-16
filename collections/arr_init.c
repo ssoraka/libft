@@ -23,7 +23,7 @@ void	*ft_return_ptr(void *elem)
 	return (*((void **)elem));
 }
 
-int	ft_init_arr(t_arr *arr, int elem_size, int elems_count,
+int	ft_init_arr(t_arr *arr, size_t elem_size, size_t elems_count,
 						void (*func_del)(void *))
 {
 	if (!arr)
@@ -40,11 +40,12 @@ int	ft_init_arr(t_arr *arr, int elem_size, int elems_count,
 	return (TRUE);
 }
 
-t_arr	*ft_create_arr(int elem_size, int elems_count, void (*func_del)(void *))
+t_arr	*ft_create_arr(size_t elem_size,
+			size_t elems_count, void (*func_del)(void *))
 {
 	t_arr	*arr;
 
-	if (elem_size <= 0)
+	if (elem_size == 0)
 		return (NULL);
 	arr = ft_memalloc(sizeof(t_arr));
 	if (arr)
@@ -56,7 +57,7 @@ t_arr	*ft_create_arr(int elem_size, int elems_count, void (*func_del)(void *))
 	return (arr);
 }
 
-t_arr	*ft_create_arr_of_ptr(int elems_count, void (*func_del)(void *))
+t_arr	*ft_create_arr_of_ptr(size_t elems_count, void (*func_del)(void *))
 {
 	t_arr	*arr;
 

@@ -78,10 +78,8 @@ ft_tolower.c \
 ft_toupper.c \
 ft_znak.c \
 get_next_line.c \
-ft_int_arr_free.c \
-ft_str_arr_free.c \
-ft_int_arr_new.c \
-ft_str_arr_new.c \
+ft_mem_arr_free.c \
+ft_mem_arr_new.c \
 ft_isspace.c \
 ft_sqrt.c \
 ft_power.c \

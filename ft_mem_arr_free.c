@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_arr_free.c                                  :+:      :+:    :+:   */
+/*   ft_mem_arr_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssoraka <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 10:13:28 by ssoraka           #+#    #+#             */
-/*   Updated: 2019/04/26 10:13:29 by ssoraka          ###   ########.fr       */
+/*   Created: 2019/04/25 20:33:23 by ssoraka           #+#    #+#             */
+/*   Updated: 2019/04/25 20:34:35 by ssoraka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_int_arr_free(int ***arr, int row)
+void	ft_mem_arr_free(void ***arr)
 {
-	int		i;
+	int		n;
 
-	i = 0;
+	n = 0;
 	if (arr == 0 || *arr == 0)
 		return ;
-	while (i < row)
+	while ((*arr)[n])
 	{
-		free((*arr)[i]);
-		i++;
+		free((*arr)[n]);
+		n++;
 	}
 	free(*arr);
 	*arr = NULL;

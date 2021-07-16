@@ -38,7 +38,7 @@ typedef struct s_arr
 {
 	void			*elems;
 	size_t			elems_count;
-	int				elems_used;
+	size_t			elems_used;
 	int				elem_size;
 	void			(*func_del)(void *);
 	void			*(*value)(void *);

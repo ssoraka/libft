@@ -26,13 +26,13 @@ char	*ft_strjoin_free(char *str1, char *str2, int del1, int del2)
 
 	if (str1 == NULL)
 	{
-		del1 = 1;
-		str1 = ft_strnew(0);
+		del1 = 0;
+		str1 = "";
 	}
 	if (str2 == NULL)
 	{
-		del2 = 1;
-		str2 = ft_strnew(0);
+		del2 = 0;
+		str2 = "";
 	}
 	str = ft_strjoin(str1, str2);
 	if (del1 > 0)
